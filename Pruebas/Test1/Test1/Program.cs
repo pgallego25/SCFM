@@ -11,7 +11,7 @@ namespace Test1
     {
         static void Main(string[] args)
         {
-            Test2.Class1 T = new Test2.Class1();
+            Class1 T = new Class1();
             T.Hello();
         }
     }

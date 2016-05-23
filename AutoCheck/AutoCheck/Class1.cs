@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test1
+namespace AutoCheck
 {
     class Class1
     {
-       public  void Hello()
-            
-        {
-            Console.WriteLine("HelloWorld");
-        }
     }
 }
