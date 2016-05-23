@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace Test1
+namespace Test2
 {
-    class Program
+    class Class1
     {
-        static void Main(string[] args)
+       public  void Hello()
+            
         {
-            Test2.Class1 T = new Test2.Class1();
-            T.Hello();
+            Console.WriteLine("HelloWorld");
         }
     }
 }
