@@ -34,7 +34,7 @@ namespace VMS.TPS
                         MessageBox.Show(TolAndMess.errorS_dose, string.Format(TolAndMess.S_errorsHeader, myPlan.Id), MessageBoxButton.OK, MessageBoxImage.Error);
                     else
                     {
-                        myTechnique = TechniqueChoice(myPlan);
+                        myTechnique = TechniqueType.TechniqueChoice(myPlan);
                         foreach (Beam myBeam in myPlan.Beams)
                             BeamTests.BeamTestsSet(myBeam);
                         PlanTests.PlanTestsSet(myPlan);
@@ -77,7 +77,7 @@ namespace VMS.TPS
             MLCPlanType myMLC = myPlan.Beams.Where(myBeam => !(myBeam.IsSetupField)).First().MLCPlanType;
             TechniqueType techniqueQuery = TechniqueType.Standard;
             switch (myMLC)
-            {
+            {   
                 case MLCPlanType.DoseDynamic:
                     techniqueQuery = TechniqueType.IMRT;
                     break;

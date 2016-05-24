@@ -9,9 +9,9 @@ using System.IO;
 
 namespace VMS.TPS
 {
-    // Enumeració que classifica el pla de tractament en funció de la tècnica utilitzada.
+        // Enumeració que classifica el pla de tractament en funció de la tècnica utilitzada.
 
-    internal enum TechniqueType
+        internal enum TechniqueType
         {
             Electrons,
             Standard,
