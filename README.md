@@ -1,3 +1,3 @@
 # SCFM
-Grupo de trabajo de la SCFM sobre automatización en TPS
-PRueba Github
+Grup de Treball "Scripting en Sistemes de Planificació"
+Benvinguts!
