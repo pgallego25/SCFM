@@ -1,0 +1,557 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HDVquery</name>
+    </assembly>
+    <members>
+        <member name="T:SCFM.HDVQuery">
+            <summary>Static class that holds static methods to provide convenience tools for HDV querying.</summary>
+            <remarks>It is highly recommended to perform all HDVQueries within the SCFM project by using these tools.</remarks>
+        </member>
+        <member name="F:SCFM.HDVQuery.myConstraints">
+            <summary>The full list of constraints that apply to the current patient/plan.</summary>
+            <remarks>Every constraint in the list must have all its properties initialized with valid values. Otherwise, functionality is not guaranteed.</remarks>
+        </member>
+        <member name="M:SCFM.HDVQuery.AddConstraint(SCFM.Constraint)">
+            <summary>Method to add a constraint to <see cref="F:SCFM.HDVQuery.myConstraints"/>.</summary>
+            <param name="c">A constraint. Type: <see cref="T:SCFM.Constraint"/>.</param>
+            <remarks>
+            Constrains must have a structure assigned. Otherwise, an exception is raised to prevent poor usage.
+            If the constraint already exists in <see cref="F:SCFM.HDVQuery.myConstraints"/>, the method do not perform any action.
+            </remarks>
+            <exception cref="T:System.ArgumentException">The structure of the constraint (c) passed as an argument is lacking.</exception>
+        </member>
+        <member name="M:SCFM.HDVQuery.RemoveConstraint(SCFM.Constraint)">
+            <summary>Method to remove a constraint from <see cref="F:SCFM.HDVQuery.myConstraints"/>.</summary>
+            <param name="c">A constraint. Type: <see cref="T:SCFM.Constraint"/>.</param>
+            <remarks>If no such constraint is found, the method do not perform any action.</remarks>
+        </member>
+        <member name="M:SCFM.HDVQuery.QuerySingleOAR(VMS.TPS.Common.Model.API.PlanningItem,VMS.TPS.Common.Model.API.Structure,System.Double)">
+            <summary>Provides an HDV assessment in a given treatment plan, by assessing each constraint of the given structure (OAR).</summary>
+            <param name="plan">The current treatment plan. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="oar">The current structure (OAR). Type: <see cref="T:VMS.TPS.Common.Model.API.Structure"/>.</param>
+            <param name="cumulativePrescriptionDose">(Optional parameter: only needed if <paramref name="plan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> and a relative dose assessment is required). The maximum cumulative prescribed dose resulting from the sum of individual prescription doses.</param>
+            <returns>A list of individual reports (one for each constraint) of the HDV assessment of the current structure in the given treatment plan. Type: <see cref="T:System.Collections.Generic.List`1"/> of type <see cref="T:SCFM.ReportSnippet"/>.</returns>
+            <exception cref="T:System.ArgumentException">Invalid structure (oar) and/or no constraints assigned.</exception>
+        </member>
+        <member name="T:SCFM.ExtensionMethods">
+            <summary>Static class containing extension methods of ESAPI types.</summary>
+        </member>
+        <member name="M:SCFM.ExtensionMethods.GetDoseAtVolume(VMS.TPS.Common.Model.API.PlanningItem,VMS.TPS.Common.Model.API.Structure,System.Double,VMS.TPS.Common.Model.Types.VolumePresentation,VMS.TPS.Common.Model.Types.DoseValuePresentation)">
+            <summary>Method that returns the dose at a given volume of the HDV of a given structure for a given a treatment plan..</summary>
+            <param name="myPlan">Type that this methods extends. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="structure">Structure (typically, an OAR) that is being assessed. Type: <see cref="T:VMS.TPS.Common.Model.API.Structure"/>.</param>
+            <param name="volume">Volume at which the dose is requested. Type: <see cref="T:System.Double"/>.</param>
+            <param name="volumePresentation">Volume units. Type: <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/>.</param>
+            <param name="dosePresentation">Dose units. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValuePresentation"/>.</param>
+            <returns>The dose at the given volume for the given structure and treatment plan. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</returns>
+            <remarks>
+            Extension method for the type <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.
+            This method leverages the homonymous method of the type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> to its parent type <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>. Therefore, this method becomes also available for derived types, like <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>.
+            If <paramref name="myPlan"/> is already of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/>, this method calls the ESAPI method. Alternatively, if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>, this implementation applies.
+            WARNING: The type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>, does not support relative dose values.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="dosePresentation"/> retrieves a relative doses, which are not supported for <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> type.</exception>
+        </member>
+        <member name="M:SCFM.ExtensionMethods.GetVolumeAtDose(VMS.TPS.Common.Model.API.PlanningItem,VMS.TPS.Common.Model.API.Structure,VMS.TPS.Common.Model.Types.DoseValue,VMS.TPS.Common.Model.Types.VolumePresentation)">
+            <summary>Method that returns the volume at a given dose of the HDV of a given structure for a given treatment plan.</summary>
+            <param name="myPlan">Type that this methods extends. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="structure">Structure (typically, an OAR) that is being assessed. Type: <see cref="T:VMS.TPS.Common.Model.API.Structure"/>.</param>
+            <param name="dose">Dose at which the volume is requested. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="volumePresentation">Volume units. Type: <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/>.</param>
+            <returns>The volume at the given dose for the given struture and treatment plan. Type: <see cref="T:System.Double"/>.</returns>
+            <remarks>
+            Extension method for the type <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.
+            This method leverages the homonymous method of the type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> to its parent type <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>. Therefore, this method becomes also available for derived types, like <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>.
+            If <paramref name="myPlan"/> is already of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/>, this method calls the ESAPI method. Alternatively, if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>, this implementation applies.
+            WARNING: The type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>, does not support relative dose values.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="dose"/> retrieves relative doses (or exotic units as "cGy" or "unknown"), which are not supported for <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> type.</exception>
+        </member>
+        <member name="T:SCFM.StructureType">
+            <summary>List of structure types.</summary>
+        </member>
+        <member name="F:SCFM.StructureType.structure">
+            <summary>Arbitrary structure that can hold any structure apart from OARs and PTVs: body, region of dose, optimization structure, etc.</summary>
+        </member>
+        <member name="F:SCFM.StructureType.OAR">
+            <summary>OAR structure.</summary>
+        </member>
+        <member name="F:SCFM.StructureType.PTV">
+            <summary>PTV structure.</summary>
+        </member>
+        <member name="T:SCFM.Constraint">
+            <summary>Model of a constraint of an OAR/PTV/other.</summary>
+            <remarks>
+            Abstract class: actual constraints are modeled by of one of the following derived classes:
+            <list type="bullet">
+            <item><see cref="T:SCFM.Constraint_Dmax"/>: contraint of type "maximum dose" (Dmax).</item>
+            <item><see cref="T:SCFM.Constraint_Dmean"/>: constraint of type "mean dose" (Dmean).</item>
+            <item><see cref="T:SCFM.Constraint_DoseAtVolume"/>: constraint of type "dose at volume" (D_V).</item>
+            <item><see cref="T:SCFM.Constraint_VolumeAtDose"/>: constraint of type "volume at dose" (V_D).</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint.GetReport(VMS.TPS.Common.Model.API.PlanningItem,System.Collections.Generic.List{SCFM.Constraint},System.Double)">
+            <summary>Method that assesses if the current structure in the current treatment plan fulfills the provided clinical constraints.</summary>
+            <param name="myPlan">The current plan. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="myConstraints">(Optional parameter: only needed if more than one constraint (apart from <c>this</c>) applies to the current OAR/PTV/other) The full list of constraints (including <c>this</c>) of the current OAR/PTV/other. Generic type: <see cref="T:System.Collections.Generic.List`1"/> of type <see cref="T:SCFM.Constraint"/>.</param>
+            <param name="cumulativePrescriptionDose">(Optional parameter: only needed if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> and a relative dose assessment is required). The maximum cumulative prescribed dose resulting from the sum of individual prescription doses.</param>
+            <returns>A report of the assessment. Type: <see cref="T:SCFM.ReportSnippet"/>.</returns>
+            <remarks>
+            This method accepts either plans of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> or <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>. In the latter case, the optional parameter <paramref name="cumulativePrescriptionDose"/> must be provided if dose assessment is performed in relative units (%), in order to calculate percentage with respect that maximum cumulative dose.
+            If the optional parameter <paramref name="myConstraints"/> is not provided, this method assesses <c>this</c> constraint only. If it is provided, the assessment is two-fold: both with respect to the least and the most restrictive constraints among the constraints of the list with coincident type, <c>Dose.Unit</c>, <see cref="P:SCFM.Constraint.VolumeUnits"/> and <see cref="P:SCFM.Constraint.Index"/> than <c>this</c>.
+            </remarks>
+            <exception cref="T:System.ArgumentException">The optional parameter <paramref name="cumulativePrescriptionDose"/> was expected but it was not provided (relative dose (%) assessment in a plan sum), or it was not expected but it was provided (in the remaining situations).</exception>
+            <exception cref="T:System.InvalidOperationException">The constraint has no structure defined.</exception>
+        </member>
+        <member name="M:SCFM.Constraint.getCurrentValue(VMS.TPS.Common.Model.API.PlanningItem,System.Double)">
+            <summary>This method retrieves the HDV value of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint).</summary>
+            <param name="myPlan">The current plan. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="cumulativePrescriptionDose">(Optional parameter: only needed if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> and a relative dose assessment is required). The maximum cumulative prescribed dose resulting from the sum of individual prescription doses.</param>
+            <returns>The HDV value of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint). The HDV is evaluated as <c>this</c> constraint: maintaining dose/volume representation (absolute/relative) and units. Type: <see cref="T:System.Double"/>.</returns>
+            <remarks>
+            Abstract method to force a specific implementation in each derived class.
+            This method accepts either plans of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> or <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>. In the latter case, the optional parameter <paramref name="cumulativePrescriptionDose"/> must be provided if dose assessment is performed in relative units (%), in order to calculate percentage with respect that maximum cumulative dose.
+            The optional parameter is not an issue for client code because the accessibility level of this method is protected. See the caller method (<see cref="M:SCFM.Constraint.GetReport(VMS.TPS.Common.Model.API.PlanningItem,System.Collections.Generic.List{SCFM.Constraint},System.Double)"/>) for more information.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint.getDuplicateThresholds(System.Collections.Generic.List{SCFM.Constraint},System.Double[]@)">
+            <summary>This method searches for redundant constraints to <c>this</c> among a list of constraints.</summary>
+            <param name="myConstraints">The full list of constraints (including <c>this</c>). Generic type: <see cref="T:System.Collections.Generic.List`1"/> of type <see cref="T:SCFM.Constraint"/>.</param>
+            <param name="myThresholds">(<c>out</c> parameter) Minimum and maximum thresholds among redunant constraints to <c>this</c>. In case of no redundant constraints, minimum and maximum values are equal to <see cref="P:SCFM.Constraint.Threshold"/>. Type: <see cref="T:System.Array"/> of <see cref="T:System.Double"/>.</param>
+            <returns><c>true</c> if at least one redundant constraint is found or <c>false</c> otherwise. Type: <see cref="T:System.Boolean"/>.</returns>
+            <remarks>
+            A constraint is considered redundant to <c>this</c> if, and only if, the following parameters are the same:
+            <list type="bullet">
+            <item><see cref="P:SCFM.Constraint.Structure"/></item>
+            <item>Type.</item>
+            <item><c>Dose.Unit</c></item>
+            <item><see cref="P:SCFM.Constraint.VolumeUnits"/></item>
+            <item><see cref="P:SCFM.Constraint.Index"/></item>
+            <item><see cref="P:SCFM.Constraint.ComparisonMode"/></item>
+            </list>
+            it has coincident type, <c>Dose.Unit</c>, <see cref="P:SCFM.Constraint.VolumeUnits"/> and <see cref="P:SCFM.Constraint.Index"/>.
+            Minimum or maximum values (or both, if no redundant constraints are found) may coincide with <see cref="P:SCFM.Constraint.Threshold"/>.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint.assessConstraint(System.Double)">
+            <summary>Method that assess if the current structure in the current treatment plan fulfills <c>this</c> constraint.</summary>
+            <param name="currentValue">Current HDV value for the current structure for the current treatment plan. Type: <see cref="T:System.Double"/>.</param>
+            <returns>A report of the assessment. Type: <see cref="T:SCFM.ReportSnippet"/>.</returns>
+            <remarks>
+            <paramref name="currentValue"/> units (either absolute or relative) must match to <see cref="P:SCFM.Constraint.ThresholdUnits"/>. WARNING: since <paramref name="currentValue"/> units are not traceable, coherent units must be provided.
+            The object of type <see cref="T:SCFM.ReportSnippet"/> is instantiated by using the constructor which takes into acount the concept of two-fold tolerances. Both tolerance levels are ascribed to <see cref="P:SCFM.Constraint.Threshold"/>.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint.assessConstraint(System.Double,System.Double,System.Double)">
+            <summary>Method that assess if the current structure in the current treatment plan fulfills the lowermost and/or uppermost provided thresholds.</summary>
+            <param name="currentValue">Current HDV value for the current structure for the current treatment plan. Type: <see cref="T:System.Double"/>.</param>
+            <param name="lowerThreshold">Lowermost threshold. It may be equal, or not, to <see cref="P:SCFM.Constraint.Threshold"/>. Type: <see cref="T:System.Double"/>.</param>
+            <param name="upperThreshold">Uppermost threshold. It may be equal, or not, to <see cref="P:SCFM.Constraint.Threshold"/>. Type: <see cref="T:System.Double"/>.</param>
+            <returns>A report of the assessment if <c>this</c> corresponds to the lowermost threshold, or <c>null</c> otherwise (see remarks). Type: <see cref="T:SCFM.ReportSnippet"/>.</returns>
+            <remarks>
+            <paramref name="currentValue"/> units (either absolute or relative) must match to <see cref="P:SCFM.Constraint.ThresholdUnits"/>. WARNING: since <paramref name="currentValue"/> units are not traceable, coherent units must be provided.
+            Typically, every constraint of a list of constrains issues an individual report. In case of redundant constraints, and in order to avoid redundant reports, only the lowermost representative of the redundant thresholds isses a report.
+            The object of type <see cref="T:SCFM.ReportSnippet"/> is instantiated by using the constructor which takes into account the concept of two-fold tolerances. "hard"/"soft" tolerance levels are ascribed to <paramref name="lowerThreshold"/>/<paramref name="upperThreshold"/> depending upong <see cref="P:SCFM.Constraint.ComparisonMode"/>.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint.ToString">
+            <summary>Written representation of the constraint in compact notation.</summary>
+            <returns>The string sequence: "[Label][Index][IndexUnits](Structure.Id)[ComparisonSymbol][Threshold][ThresholdUnits]". Type: <see cref="T:System.String"/>.</returns>
+            <remarks>Overrided version of the method <see cref="M:System.Object.ToString"/> of the .NET base class library.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.Structure">
+            <summary>Property that holds the underlying structure of the constraint.</summary>
+            <value><see cref="T:VMS.TPS.Common.Model.API.Structure"/> (auto-implemented property).</value>
+            <remarks>This property may not be initialized when instantiating a particular constraint, but it is mandatory for HDV queries.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.StructureType">
+            <summary>Property that holds the type of the underlying structure (OAR/PTV/other).</summary>
+            <value><see cref="T:SCFM.StructureType"/> (auto-implemented property).</value>
+            <remarks>Protected setter to force initialization through the constructor of the derived classes.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.ComparisonMode">
+            <summary>Property that holds the comparison mode between the actual value and the constraint value.</summary>
+            <value><see cref="T:SCFM.ComparisonMode"/> <see cref="F:SCFM.Constraint._comparer"/>.</value>
+            <remarks>
+            Only equal, greater equal, greater than, less equal or less than comparison modes are supported.
+            Protected setter to force initialization through the constructor of the derived classes.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException">Unsupported comparison mode.</exception>
+        </member>
+        <member name="P:SCFM.Constraint.ComparisonSymbol">
+            <summary>Property that holds the symbol of the comparison mode of the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint.ComparisonSymbol"/>.</value>
+            <remarks>Read-only property because the symbol is determined by <see cref="P:SCFM.Constraint.ComparisonMode"/>.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.Dose">
+            <summary>Property that holds the dose of the constraint.</summary>
+            <value><see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/> <see cref="F:SCFM.Constraint._dose"/></value>
+            <remarks>
+            Only postivie values are allowed, either relative (in %) or absolute (in Gy). Other units (cGy or Unknown) are not allowed.
+            Protected setter to force initialization through the constructor of the derived classes.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value.Dose</c> is not positive.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value.Unit</c> is not "Gy" nor "Percent".</exception>
+        </member>
+        <member name="P:SCFM.Constraint.Volume">
+            <summary>Property that holds the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <see cref="F:SCFM.Constraint._volume"/></value>
+            <remarks>
+            Only positive values are allowed (or <c>null</c>). Virtual property allows derived classes to implement further input parameter checkings.
+            Protected setter to force initialization through the constructor of the derived classes.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value</c> is not positive (or <c>null</c>).</exception>
+        </member>
+        <member name="P:SCFM.Constraint.VolumeUnits">
+            <summary>Property that holds the units of the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/> (auto-implemented property).</value>
+            <remarks>
+            Virtual property allows derived classes to implement further input parameter checkings.
+            Protected setter to force initialization through the constructor of the derived classes.
+            </remarks>
+        </member>
+        <member name="P:SCFM.Constraint.Label">
+            <summary>Property that holds the text label that identifies the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint.Label"/>.</value>
+            <remarks>Read-only property because label depends only on the derived type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.Index">
+            <summary>Property that holds the index of the constraint (queried value).</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <see cref="P:SCFM.Constraint.Index"/>.</value>
+            <remarks>Read-only property because index, either dose or volume, depends only on the derived type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.IndexUnits">
+            <summary>Property that holds the units of the index of the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint.IndexUnits"/>.</value>
+            <remarks>Read-only property because index units, either dose or volume, depend only on the derived the type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.Threshold">
+            <summary>Property that holds the threshold of the constraint (constraint value).</summary>
+            <value><see cref="T:System.Double"/> <see cref="P:SCFM.Constraint.Threshold"/>.</value>
+            <remarks>Read-only property because threshold, either dose or volume, depends only on the derived type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint.ThresholdUnits">
+            <summary>Property that holds the units of the threshold of the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint.ThresholdUnits"/>.</value>
+            <remarks>Read-only property because threshold units, either dose or volume, depend only on the derived type.</remarks>
+        </member>
+        <member name="T:SCFM.Constraint_Dmax">
+            <summary>Model of a constraint of an OAR/PTV/other of type "maximum dose" (Dmax).</summary>
+            <remarks>Sealed class. Constraints of type "Dmax" do not need further specialization.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_Dmax.#ctor(VMS.TPS.Common.Model.Types.DoseValue,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties except the structure associated to the constraint.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>
+            <see cref="P:SCFM.Constraint_Dmax.Volume"/> and <see cref="P:SCFM.Constraint_Dmax.VolumeUnits"/> are <c>null</c> by definition.
+            Properties are initialized in an appropriate order to allow meaningful argument checking.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint_Dmax.#ctor(VMS.TPS.Common.Model.Types.DoseValue,VMS.TPS.Common.Model.API.Structure,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="structure">The structure associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.API.Structure"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>
+            <see cref="P:SCFM.Constraint_Dmax.Volume"/> and <see cref="P:SCFM.Constraint_Dmax.VolumeUnits"/> are <c>null</c> by definition.
+            Properties are initialized in an appropriate order to allow meaningful argument checking.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint_Dmax.getCurrentValue(VMS.TPS.Common.Model.API.PlanningItem,System.Double)">
+            <summary>This method retrieves the maximum dose (Dmax) of the HDV of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint).</summary>
+            <param name="myPlan">The current plan. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="cumulativePrescriptionDose">(Optional parameter: only needed if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> and a relative dose assessment is required). The maximum cumulative prescribed dose (in Gy) resulting from the sum of individual prescription doses.</param>
+            <returns>The Dmax of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint). Dmax has the same representation (absolute/relative) and units than <c>this</c> constraint. Type: <see cref="T:System.Double"/>.</returns>
+            <remarks>
+            Overrided version of the base class method to return Dmax.
+            This method accepts either plans of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> or <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>. In the latter case, the optional parameter <paramref name="cumulativePrescriptionDose"/> must be provided if dose assessment is performed in relative units (%), in order to calculate percentage with respect that maximum cumulative dose.
+            The optional parameter is not an issue for client code because the accessibility level of this method is protected. See the caller method (<see cref="M:SCFM.Constraint.GetReport(VMS.TPS.Common.Model.API.PlanningItem,System.Collections.Generic.List{SCFM.Constraint},System.Double)"/>) for more information.
+            </remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmax.Volume">
+            <summary>Property that holds the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <c>base.Volume</c></value>
+            <remarks>
+            Overrided version of the base class property: <see cref="P:SCFM.Constraint_Dmax.Volume"/> is <c>null</c> by definition.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value</c> is not <c>null</c>.</exception>
+        </member>
+        <member name="P:SCFM.Constraint_Dmax.VolumeUnits">
+            <summary>Property that holds the units of the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/> <c>base.VolumeUnits</c>.</value>
+            <remarks>
+            Overrided version of the base class property: <see cref="P:SCFM.Constraint_Dmax.VolumeUnits"/> is <c>null</c> by definition.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value</c> is not <c>null</c>.</exception>
+        </member>
+        <member name="P:SCFM.Constraint_Dmax.Label">
+            <summary>Property that holds the text label that identifies the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_Dmax.Label"/>.</value>
+            <remarks>Read-only property because label is determined by the type: "Dmax" for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmax.Index">
+            <summary>Property that holds the index of the constraint (queried value).</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <see cref="P:SCFM.Constraint_Dmax.Index"/>.</value>
+            <remarks>Read-only property because index is determined by the type: <c>null</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmax.IndexUnits">
+            <summary>Property that holds the units of the index of the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_Dmax.IndexUnits"/>.</value>
+            <remarks>Read-only property because index units are determined by the type: <c>null</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmax.Threshold">
+            <summary>Property that holds the threshold of the constraint (constraint value).</summary>
+            <value><see cref="T:System.Double"/> <c>base.Dose.Dose</c>.</value>
+            <remarks>Read-only property because threshold is determined by the type: <c>Dose.Dose</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmax.ThresholdUnits">
+            <summary>Property that holds the units of the threshold of the constraint.</summary>
+            <value><see cref="T:System.String"/> <c>base.Dose.UnitAsString</c>.</value>
+            <remarks>Read-only property because threshold units are determined by the type: <c>Dose.UnitAsString</c> for this type.</remarks>
+        </member>
+        <member name="T:SCFM.Constraint_Dmean">
+            <summary>Model of a constraint of an OAR/PTV/other of type "mean dose" (Dmean).</summary>
+            <remarks>Sealed class. Constraints of type "Dmean" do not need further specialization.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_Dmean.#ctor(VMS.TPS.Common.Model.Types.DoseValue,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties except the structure associated to the constraint.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>
+            <see cref="P:SCFM.Constraint_Dmean.Volume"/> and <see cref="P:SCFM.Constraint_Dmean.VolumeUnits"/> are <c>null</c> by definition.
+            Properties are initialized in an appropriate order to allow meaningful argument checking.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint_Dmean.#ctor(VMS.TPS.Common.Model.Types.DoseValue,VMS.TPS.Common.Model.API.Structure,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="structure">The structure associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.API.Structure"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>
+            <see cref="P:SCFM.Constraint_Dmean.Volume"/> and <see cref="P:SCFM.Constraint_Dmean.VolumeUnits"/> are <c>null</c> by definition.
+            Properties are initialized in an appropriate order to allow meaningful argument checking.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint_Dmean.getCurrentValue(VMS.TPS.Common.Model.API.PlanningItem,System.Double)">
+            <summary>This method retrieves the mean dose (Dmean) of the HDV of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint).</summary>
+            <param name="myPlan">The current plan. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="cumulativePrescriptionDose">(Optional parameter: only needed if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> and a relative dose assessment is required). The maximum cumulative prescribed dose (in Gy) resulting from the sum of individual prescription doses.</param>
+            <returns>The Dmean of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint). Dmean has the same representation (absolute/relative) and units than <c>this</c> constraint. Type: <see cref="T:System.Double"/>.</returns>
+            <remarks>
+            Overrided version of the base class method to return Dmean.
+            This method accepts either plans of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> or <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>. In the latter case, the optional parameter <paramref name="cumulativePrescriptionDose"/> must be provided if dose assessment is performed in relative units (%), in order to calculate percentage with respect that maximum cumulative dose.
+            The optional parameter is not an issue for client code because the accessibility level of this method is protected. See the caller method (<see cref="M:SCFM.Constraint.GetReport(VMS.TPS.Common.Model.API.PlanningItem,System.Collections.Generic.List{SCFM.Constraint},System.Double)"/>) for more information.
+            </remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmean.Volume">
+            <summary>Property that holds the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <c>base.Volume</c></value>
+            <remarks>
+            Overrided version of the base class property: <see cref="P:SCFM.Constraint_Dmean.Volume"/> is <c>null</c> by definition.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value</c> is not <c>null</c>.</exception>
+        </member>
+        <member name="P:SCFM.Constraint_Dmean.VolumeUnits">
+            <summary>Property that holds the units of the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/> <c>base.VolumeUnits</c>.</value>
+            <remarks>
+            Overrided version of the base class property: <see cref="P:SCFM.Constraint_Dmean.VolumeUnits"/> is <c>null</c> by definition.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value</c> is not <c>null</c>.</exception>
+        </member>
+        <member name="P:SCFM.Constraint_Dmean.Label">
+            <summary>Property that holds the text label that identifies the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_Dmean.Label"/>.</value>
+            <remarks>Read-only property because such label is determined by the type: "Dmean" for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmean.Index">
+            <summary>Property that holds the index of the constraint (queried value).</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <see cref="P:SCFM.Constraint_Dmean.Index"/>.</value>
+            <remarks>Read-only property because index is determined by the type: <c>null</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmean.IndexUnits">
+            <summary>Property that holds the units of the index of the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_Dmean.IndexUnits"/>.</value>
+            <remarks>Read-only property because index units are determined by the type: <c>null</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmean.Threshold">
+            <summary>Property that holds the threshold of the constraint (constraint value).</summary>
+            <value><see cref="T:System.Double"/> <c>base.Dose.Dose</c>.</value>
+            <remarks>Read-only property because threshold is determined by the type: <c>Dose.Dose</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_Dmean.ThresholdUnits">
+            <summary>Property that holds the units of the threshold of the constraint.</summary>
+            <value><see cref="T:System.String"/> <c>base.Dose.UnitAsString</c>.</value>
+            <remarks>Read-only property because threshold units are determined by the type: <c>Dose.UnitAsString</c> for this type.</remarks>
+        </member>
+        <member name="T:SCFM.Constraint_DoseAtVolume">
+            <summary>Model of a constraint of an OAR/PTV/other of type "dose at volume" (D_V).</summary>
+            <remarks>Sealed class. Constraints of type "D_V" do not need further specialization.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_DoseAtVolume.#ctor(VMS.TPS.Common.Model.Types.DoseValue,System.Double,VMS.TPS.Common.Model.Types.VolumePresentation,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties except the structure associated to the constraint.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="volume">The volume associated to the constraint. Type: <see cref="T:System.Double"/>.</param>
+            <param name="volumeUnits">The units of the volume. Type: <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>Properties are initialized in an appropriate order to allow meaningful argument checking.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_DoseAtVolume.#ctor(VMS.TPS.Common.Model.Types.DoseValue,System.Double,VMS.TPS.Common.Model.Types.VolumePresentation,VMS.TPS.Common.Model.API.Structure,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="volume">The volume associated to the constraint. Type: <see cref="T:System.Double"/>.</param>
+            <param name="volumeUnits">The units of the volume. Type: <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/>.</param>
+            <param name="structure">The structure associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.API.Structure"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>Properties are initialized in an appropriate order to allow meaningful argument checking.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_DoseAtVolume.getCurrentValue(VMS.TPS.Common.Model.API.PlanningItem,System.Double)">
+            <summary>This method retrieves the dose at volume (D_V) of the HDV of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint).</summary>
+            <param name="myPlan">The current plan. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="cumulativePrescriptionDose">(Optional parameter: only needed if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> and a relative dose assessment is required). The maximum cumulative prescribed dose (in Gy) resulting from the sum of individual prescription doses.</param>
+            <returns>The D_V of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint). D_V has the same representation (absolute/relative) and units than <c>this</c> constraint, and it is evaluated at the same point (<see cref="P:SCFM.Constraint_DoseAtVolume.Index"/>). Type: <see cref="T:System.Double"/>.</returns>
+            <remarks>
+            Overrided version of the base class method to return D_V.
+            This method accepts either plans of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> or <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>. In the latter case, the optional parameter <paramref name="cumulativePrescriptionDose"/> must be provided if dose assessment is performed in relative units (%), in order to calculate percentage with respect that maximum cumulative dose.
+            The optional parameter is not an issue for client code because the accessibility level of this method is protected. See the caller method (<see cref="M:SCFM.Constraint.GetReport(VMS.TPS.Common.Model.API.PlanningItem,System.Collections.Generic.List{SCFM.Constraint},System.Double)"/>) for more information.
+            </remarks>
+        </member>
+        <member name="P:SCFM.Constraint_DoseAtVolume.Volume">
+            <summary>Property that holds the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <c>base.Volume</c></value>
+            <remarks>
+            Overrided version of the base class property: not <c>null</c> <see cref="P:SCFM.Constraint_DoseAtVolume.Volume"/> values are required and, if relative, <see cref="P:SCFM.Constraint_DoseAtVolume.Volume"/> can not exceed 100%.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><c>value</c> is <c>null</c>.</exception>"
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value</c> (when relative) exceeds 100%.</exception>
+            <exception cref="T:System.ArgumentNullException"><see cref="P:SCFM.Constraint_DoseAtVolume.VolumeUnits"/> is <c>null</c>.</exception>"
+        </member>
+        <member name="P:SCFM.Constraint_DoseAtVolume.VolumeUnits">
+            <summary>Property that holds the units of the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/> <c>base.VolumeUnits</c>.</value>
+            <remarks>
+            Overrided version of the base class property: <see cref="P:SCFM.Constraint_DoseAtVolume.VolumeUnits"/> is not <c>null</c> by definition.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><c>value</c> is <c>null</c>.</exception>
+        </member>
+        <member name="P:SCFM.Constraint_DoseAtVolume.Label">
+            <summary>Property that holds the text label that identifies the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_DoseAtVolume.Label"/>.</value>
+            <remarks>Read-only property because such label is determined by the type: "D" for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_DoseAtVolume.Index">
+            <summary>Property that holds the index of the constraint (queried value).</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <c>base.Volume</c>.</value>
+            <remarks>Read-only property because index is determined by the type: <see cref="P:SCFM.Constraint_DoseAtVolume.Volume"/> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_DoseAtVolume.IndexUnits">
+            <summary>Property that holds the units of the index of the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_DoseAtVolume.IndexUnits"/>.</value>
+            <remarks>Read-only property because index units are determined by the type: either "cc" or "%" depending upon the <see cref="P:SCFM.Constraint_DoseAtVolume.VolumeUnits"/> property.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_DoseAtVolume.Threshold">
+            <summary>Property that holds the threshold of the constraint (constraint value).</summary>
+            <value><see cref="T:System.Double"/> <c>base.Dose.Dose</c>.</value>
+            <remarks>Read-only property because threshold is determined by the type: <c>Dose.Dose</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_DoseAtVolume.ThresholdUnits">
+            <summary>Property that holds the units of the threshold of the constraint.</summary>
+            <value><see cref="T:System.String"/> <c>base.Dose.UnitAsString</c>.</value>
+            <remarks>Read-only property because threshold units are determined by the type: <c>Dose.UnitAsString</c> for this type.</remarks>
+        </member>
+        <member name="T:SCFM.Constraint_VolumeAtDose">
+            <summary>Model of a constraint of an OAR/PTV/other of type "volume at dose" (V_D).</summary>
+            <remarks>Sealed class. Constraints of type "V_D" do not need further specialization.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_VolumeAtDose.#ctor(VMS.TPS.Common.Model.Types.DoseValue,System.Double,VMS.TPS.Common.Model.Types.VolumePresentation,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties except the structure associated to the constraint.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="volume">The volume associated to the constraint. Type: <see cref="T:System.Double"/>.</param>
+            <param name="volumeUnits">The units of the volume. Type: <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>Properties are initialized in an appropriate order to allow meaningful argument checking.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_VolumeAtDose.#ctor(VMS.TPS.Common.Model.Types.DoseValue,System.Double,VMS.TPS.Common.Model.Types.VolumePresentation,VMS.TPS.Common.Model.API.Structure,SCFM.StructureType,SCFM.ComparisonMode)">
+            <summary>This constructor initializes all properties.</summary>
+            <param name="dose">The dose associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.Types.DoseValue"/>.</param>
+            <param name="volume">The volume associated to the constraint. Type: <see cref="T:System.Double"/>.</param>
+            <param name="volumeUnits">The units of the volume. Type: <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/>.</param>
+            <param name="structure">The structure associated to the constraint. Type: <see cref="T:VMS.TPS.Common.Model.API.Structure"/>.</param>
+            <param name="structureType">The type of the underlying structure (OAR/PTV/other). Type: <see cref="T:SCFM.StructureType"/>.</param>
+            <param name="comparisonMode">The comparison mode between actual value and the constraint value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>Properties are initialized in an appropriate order to allow meaningful argument checking.</remarks>
+        </member>
+        <member name="M:SCFM.Constraint_VolumeAtDose.getCurrentValue(VMS.TPS.Common.Model.API.PlanningItem,System.Double)">
+            <summary>This method retrieves the volume at dose (V_D) of the HDV of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint).</summary>
+            <param name="myPlan">The current plan. Type: <see cref="T:VMS.TPS.Common.Model.API.PlanningItem"/>.</param>
+            <param name="cumulativePrescriptionDose">(Optional parameter: only needed if <paramref name="myPlan"/> is of type <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/> and a relative dose assessment is required). The maximum cumulative prescribed dose (in Gy) resulting from the sum of individual prescription doses.</param>
+            <returns>The V_D of the current OAR/PTV/other for the current treatment plan (to compare against <c>this</c> constraint). V_D has the same representation (absolute/relative) and units than <c>this</c> constraint, and it is evaluated at the same point (<see cref="P:SCFM.Constraint_VolumeAtDose.Index"/>). Type: <see cref="T:System.Double"/>.</returns>
+            <remarks>
+            Overrided version of the base class method to return V_D.
+            This method accepts either plans of type <see cref="T:VMS.TPS.Common.Model.API.PlanSetup"/> or <see cref="T:VMS.TPS.Common.Model.API.PlanSum"/>. In the latter case, the optional parameter <paramref name="cumulativePrescriptionDose"/> must be provided if dose assessment is performed in relative units (%), in order to calculate percentage with respect that maximum cumulative dose.
+            The optional parameter is not an issue for client code because the accessibility level of this method is protected. See the caller method (<see cref="M:SCFM.Constraint.GetReport(VMS.TPS.Common.Model.API.PlanningItem,System.Collections.Generic.List{SCFM.Constraint},System.Double)"/>) for more information.
+            </remarks>
+        </member>
+        <member name="P:SCFM.Constraint_VolumeAtDose.Volume">
+            <summary>Property that holds the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <c>base.Volume</c></value>
+            <remarks>
+            Overrided version of the base class property: not <c>null</c> <see cref="P:SCFM.Constraint_VolumeAtDose.Volume"/> values are required and, if relative, <see cref="P:SCFM.Constraint_VolumeAtDose.Volume"/> can not exceed 100%.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><c>value</c> is <c>null</c>.</exception>"
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>value</c> (when relative) exceeds 100%.</exception>
+            <exception cref="T:System.ArgumentNullException"><see cref="P:SCFM.Constraint_VolumeAtDose.VolumeUnits"/> is <c>null</c>.</exception>"
+        </member>
+        <member name="P:SCFM.Constraint_VolumeAtDose.VolumeUnits">
+            <summary>Property that holds the units of the volume of the constraint.</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:VMS.TPS.Common.Model.Types.VolumePresentation"/> <c>base.VolumeUnits</c>.</value>
+            <remarks>
+            Overrided version of the base class property: <see cref="P:SCFM.Constraint_VolumeAtDose.VolumeUnits"/> is not <c>null</c> by definition.
+            Protected setter to force initialization through the constructor.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><c>value</c> is <c>null</c>.</exception>
+        </member>
+        <member name="P:SCFM.Constraint_VolumeAtDose.Label">
+            <summary>Property that holds the text label that identifies the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_VolumeAtDose.Label"/>.</value>
+            <remarks>Read-only property because such label is determined by the type: "V" for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_VolumeAtDose.Index">
+            <summary>Property that holds the index of the constraint (queried value).</summary>
+            <value><see cref="T:System.Nullable"/> of type <see cref="T:System.Double"/> <c>base.Dose.Dose</c>.</value>
+            <remarks>Read-only property because index is determined by the type: <c>Dose.Dose</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_VolumeAtDose.IndexUnits">
+            <summary>Property that holds the units of the index of the constraint.</summary>
+            <value><see cref="T:System.String"/> <c>base.Dose.UnitAsString</c>.</value>
+            <remarks>Read-only property because index units are determined by the type: <c>Dose.UnitAsString</c> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_VolumeAtDose.Threshold">
+            <summary>Property that holds the threshold of the constraint (constraint value).</summary>
+            <value><see cref="T:System.Double"/> <c>(double)base.Volume</c>.</value>
+            <remarks>Read-only property because threshold is determined by the type: <see cref="P:SCFM.Constraint_VolumeAtDose.Volume"/> for this type.</remarks>
+        </member>
+        <member name="P:SCFM.Constraint_VolumeAtDose.ThresholdUnits">
+            <summary>Property that holds the units of the threshold of the constraint.</summary>
+            <value><see cref="T:System.String"/> <see cref="P:SCFM.Constraint_VolumeAtDose.ThresholdUnits"/>.</value>
+            <remarks>Read-only property because threshold units are determined by the type: either "cc" or "%" depending upon the <see cref="P:SCFM.Constraint_VolumeAtDose.VolumeUnits"/> property.</remarks>
+        </member>
+    </members>
+</doc>

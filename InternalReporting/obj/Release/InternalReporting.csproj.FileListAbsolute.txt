@@ -1,0 +1,16 @@
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\InternalReporting.xml
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\InternalReporting.dll
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\InternalReporting.pdb
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\VMS.TPS.Common.Model.API.dll
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\VMS.TPS.Common.Model.Types.dll
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.dll
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.pdb
+A:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.csprojResolveAssemblyReference.cache
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\InternalReporting.xml
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\InternalReporting.dll
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\InternalReporting.pdb
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\VMS.TPS.Common.Model.API.dll
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\VMS.TPS.Common.Model.Types.dll
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.csprojResolveAssemblyReference.cache
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.dll
+C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.pdb

@@ -1,0 +1,8 @@
+En procés:
+- Constraint: falta implementar el cas "=" en assessConstraint. Què passa quan hi ha constraints duplicades del tipus "="? I que passa amb constraints del tipus "<" i "<=" (no es consideren duplicades!! idem per > i >=)
+- HDVquery. Seguir construint les eines necessaries per el query a HDV.
+
+Testing:
+- Constraint_Dmax.Test: adequar els tests al constructor addicional que he creat i a les noves properies de la classe constraint (Structure, StructureType, ComparerMode)
+- HDVquery.Test project: Fer només Constraint_Dmax: tests per dosimetric reporting, que rau en Constraint. Per la resta (Dmean, V_D i D_V ho fa la Maria).
+- InternalReporting.Test project: començar

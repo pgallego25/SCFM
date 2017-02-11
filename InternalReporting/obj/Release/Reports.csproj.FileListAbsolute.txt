@@ -1,0 +1,14 @@
+C:\ALatorre\SCFM\Reports\bin\Release\Reports.dll
+C:\ALatorre\SCFM\Reports\bin\Release\Reports.pdb
+C:\ALatorre\SCFM\Reports\bin\Release\VMS.TPS.Common.Model.API.dll
+C:\ALatorre\SCFM\Reports\bin\Release\VMS.TPS.Common.Model.Types.dll
+C:\ALatorre\SCFM\Reports\obj\Release\Reports.dll
+C:\ALatorre\SCFM\Reports\obj\Release\Reports.pdb
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\bin\Release\Reports.XML
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\bin\Release\Reports.dll
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\bin\Release\Reports.pdb
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\bin\Release\VMS.TPS.Common.Model.API.dll
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\bin\Release\VMS.TPS.Common.Model.Types.dll
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\obj\Release\Reports.csprojResolveAssemblyReference.cache
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\obj\Release\Reports.dll
+C:\Dropbox\HSCSP\scripting\SCFM\Reports\obj\Release\Reports.pdb

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HDVquery.Test</name>
+    </assembly>
+    <members>
+        <member name="T:SCFM.Constraint_Dmax_Test">
+            <summary>Unit tests for type <see cref="T:SCFM.Constraint_Dmax"/>.</summary>
+            <remarks>
+            These tests are not based on any testing framework: they are constructed by using regular classes and methods.
+            Static class since it only contains a set of static methods.
+            </remarks>
+        </member>
+        <member name="M:SCFM.Constraint_Dmax_Test.Instantiation_and_Querying(VMS.TPS.Common.Model.API.ScriptContext)">
+            <summary>Method that checks the instantiation through all available constructors and the usage of all properties of an object of type <see cref="T:SCFM.Constraint_Dmax"/> when appropriate arguments are provided (exceptions are not tested).</summary>
+            <param name="context">The context provided by Eclipse. Type: <see cref="T:VMS.TPS.Common.Model.API.ScriptContext"/>.</param>
+            <returns>The result of the test in terms of a single boolean variable, resulting from a logical AND of all individual checks (<c>true</c> = pass, <c>false</c> = fail). Type: <see cref="T:System.Boolean"/>.</returns>
+        </member>
+        <member name="M:SCFM.Constraint_Dmax_Test.StringRepresentation(VMS.TPS.Common.Model.API.ScriptContext)">
+            <summary>Method that checks the string representation of an object of type <see cref="T:SCFM.Constraint_Dmax"/>.</summary>
+            <param name="context">The context provided by Eclipse. Type: <see cref="T:VMS.TPS.Common.Model.API.ScriptContext"/>.</param>
+            <returns>The result of the test in terms of a single boolean variable, resulting from a logical AND of all individual checks (<c>true</c> = pass, <c>false</c> = fail). Type: <see cref="T:System.Boolean"/>.</returns>
+        </member>
+    </members>
+</doc>

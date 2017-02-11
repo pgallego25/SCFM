@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SCFM.esapi</name>
+    </assembly>
+    <members>
+        <member name="T:VMS.TPS.Script">
+            <summary>Bridge between ESAPI and SCFM project.</summary>
+            <remarks>The types, GUI and performance of the project must be enclosed within <c>SCFM</c> namespace. This class only links ESAPI with SCFM project.</remarks>
+        </member>
+        <member name="M:VMS.TPS.Script.#ctor">
+            <summary>Default 0-parameter constructor.</summary>
+        </member>
+        <member name="M:VMS.TPS.Script.Execute(VMS.TPS.Common.Model.API.ScriptContext)">
+            <summary>Entry point of the script.</summary>
+            <param name="context">The context provided by Eclipse. Type: <see cref="T:VMS.TPS.Common.Model.API.ScriptContext"/>.</param>
+        </member>
+        <member name="T:VMS.TPS.IntegrationTests">
+            <summary>Static class that contains calls to all test projects of the solution.</summary>
+        </member>
+        <member name="M:VMS.TPS.IntegrationTests.Constraint_Dmax(VMS.TPS.Common.Model.API.ScriptContext)">
+            <summary>Static method providing access test outcomes for type <see cref="T:SCFM.Constraint_Dmax"/>.</summary>
+            <param name="context">The context provided by Eclipse. Type: <see cref="T:VMS.TPS.Common.Model.API.ScriptContext"/>.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,17 @@
+C:\ALatorre\SCFM\Projects\SCFM\obj\Release\SCFM.csprojResolveAssemblyReference.cache
+C:\ALatorre\SCFM\plugins\SCFM.esapi.dll
+C:\ALatorre\SCFM\plugins\SCFM.esapi.pdb
+C:\ALatorre\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.dll
+C:\ALatorre\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.pdb
+C:\Dropbox\HSCSP\scripting\SCFM\plugins\SCFM.esapi.XML
+C:\Dropbox\HSCSP\scripting\SCFM\plugins\SCFM.esapi.dll
+C:\Dropbox\HSCSP\scripting\SCFM\plugins\SCFM.esapi.pdb
+C:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.csprojResolveAssemblyReference.cache
+C:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.dll
+C:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.pdb
+A:\Dropbox\HSCSP\scripting\SCFM\plugins\SCFM.esapi.XML
+A:\Dropbox\HSCSP\scripting\SCFM\plugins\SCFM.esapi.dll
+A:\Dropbox\HSCSP\scripting\SCFM\plugins\SCFM.esapi.pdb
+A:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.csprojResolveAssemblyReference.cache
+A:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.dll
+A:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.pdb

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SCFM.Constraint">
+    <Position X="5.25" Y="0.5" Width="8.25" />
+    <TypeIdentifier>
+      <HashCode>AABACABAEAAABgAkAAAAIBAEAAgABACAAAMgAACAAAA=</HashCode>
+      <FileName>Constraint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SCFM.Constraint_Dmax">
+    <Position X="0.5" Y="6.5" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAEAAABgAAAAAAAAAAAAAABAAAAAMgAAAAAAA=</HashCode>
+      <FileName>Constraint_Dmax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SCFM.Constraint_Dmean">
+    <Position X="12.5" Y="6.75" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAEAAABgAAAAAAAAAAAAAABAAAAAMgAAAAAAA=</HashCode>
+      <FileName>Constraint_Dmean.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SCFM.Constraint_DoseAtVolume">
+    <Position X="0.5" Y="10.5" Width="8.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAEAAABgAAAAAAAAAAAAAABAAAAAMgAAAAAAA=</HashCode>
+      <FileName>Constraint_DoseAtVolume.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SCFM.Constraint_VolumeAtDose">
+    <Position X="9.5" Y="10.5" Width="8.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAEAAABgAAAAAAAAAAAAAABAAAAAMgAAAAAAA=</HashCode>
+      <FileName>Constraint_VolumeAtDose.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SCFM.ExtensionMethods">
+    <Position X="14" Y="0.5" Width="10.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExtensionMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SCFM.HDVQuery">
+    <Position X="14" Y="2" Width="7.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAEAAAAAAAAAAAAAgAAAAAAAUAACAAAAAA=</HashCode>
+      <FileName>HDVQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="SCFM.StructureType">
+    <Position X="23.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAA=</HashCode>
+      <FileName>StructureType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

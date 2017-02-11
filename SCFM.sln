@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCFM", "Projects\SCFM\SCFM.csproj", "{F6703E2A-F4BA-4F9E-8F8C-E1356FF2A3ED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{668A7A65-04C8-4209-A6D5-C57A920D33AE} = {668A7A65-04C8-4209-A6D5-C57A920D33AE}
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005} = {2DD7F68C-D78D-4312-8C38-9AEFB045A005}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDVquery", "HDVquery\HDVquery.csproj", "{668A7A65-04C8-4209-A6D5-C57A920D33AE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005} = {2DD7F68C-D78D-4312-8C38-9AEFB045A005}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalReporting", "InternalReporting\InternalReporting.csproj", "{2DD7F68C-D78D-4312-8C38-9AEFB045A005}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDVquery.Test", "HDVquery.Test\HDVquery.Test.csproj", "{DF1F42D0-7C0E-486D-AECC-B678FAB10E0C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{668A7A65-04C8-4209-A6D5-C57A920D33AE} = {668A7A65-04C8-4209-A6D5-C57A920D33AE}
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005} = {2DD7F68C-D78D-4312-8C38-9AEFB045A005}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{69BD8BE4-7572-4386-B952-C07ED577F201}"
+	ProjectSection(SolutionItems) = preProject
+		TODO.txt = TODO.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InternalReporting.Test", "InternalReporting.Test\InternalReporting.Test.csproj", "{EA84B8A8-BB2A-44E8-AA17-A46DA5746260}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005} = {2DD7F68C-D78D-4312-8C38-9AEFB045A005}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6703E2A-F4BA-4F9E-8F8C-E1356FF2A3ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6703E2A-F4BA-4F9E-8F8C-E1356FF2A3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6703E2A-F4BA-4F9E-8F8C-E1356FF2A3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6703E2A-F4BA-4F9E-8F8C-E1356FF2A3ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668A7A65-04C8-4209-A6D5-C57A920D33AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668A7A65-04C8-4209-A6D5-C57A920D33AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668A7A65-04C8-4209-A6D5-C57A920D33AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668A7A65-04C8-4209-A6D5-C57A920D33AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD7F68C-D78D-4312-8C38-9AEFB045A005}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF1F42D0-7C0E-486D-AECC-B678FAB10E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1F42D0-7C0E-486D-AECC-B678FAB10E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1F42D0-7C0E-486D-AECC-B678FAB10E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1F42D0-7C0E-486D-AECC-B678FAB10E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA84B8A8-BB2A-44E8-AA17-A46DA5746260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA84B8A8-BB2A-44E8-AA17-A46DA5746260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA84B8A8-BB2A-44E8-AA17-A46DA5746260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA84B8A8-BB2A-44E8-AA17-A46DA5746260}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
