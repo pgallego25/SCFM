@@ -6,3 +6,5 @@ Testing:
 - Constraint_Dmax.Test: adequar els tests al constructor addicional que he creat i a les noves properies de la classe constraint (Structure, StructureType, ComparerMode)
 - HDVquery.Test project: Fer només Constraint_Dmax: tests per dosimetric reporting, que rau en Constraint. Per la resta (Dmean, V_D i D_V ho fa la Maria).
 - InternalReporting.Test project: començar
+
+Nota de prova
