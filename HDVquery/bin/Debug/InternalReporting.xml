@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InternalReporting</name>
+    </assembly>
+    <members>
+        <member name="T:SCFM.InfoLevel">
+            <summary>List of possible results of a test within the SCFM project.</summary>
+        </member>
+        <member name="F:SCFM.InfoLevel.undefined">
+            <summary>Undefined/uninitialized state.</summary>
+        </member>
+        <member name="F:SCFM.InfoLevel.GREEN">
+            <summary>The test issues a "pass/success/green" score.</summary>
+        </member>
+        <member name="F:SCFM.InfoLevel.YELLOW">
+            <summary>The test issues a "warning/yellow" score.</summary>
+        </member>
+        <member name="F:SCFM.InfoLevel.RED">
+            <summary>The test issues a "fail/error/red" score.</summary>
+        </member>
+        <member name="T:SCFM.ComparisonMode">
+            <summary>List of all possible comparison operators between actual values and reference/tolerance values.</summary>
+            <remarks>This Enum is used by <see cref="T:SCFM.ReportSnippet"/> to establish the underlying relation between actual value and reference/tolerance concepts.</remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.equal">
+            <summary>Equality between actual value and reference value.</summary>
+            <remarks>It is an appropriate operator when the concept of tolerance does not apply, and the comparison is performed against a single reference value.</remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.notEqual">
+            <summary>Inequality between actual value and reference value.</summary>
+            <remarks>It is an appropriate operator when the concept of tolerance does not apply, and the comparison is performed against a single reference value..</remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.greaterEqual">
+            <summary>Actual value must be greater or equal than a given reference/tolerance value.</summary>
+            <remarks>
+            It is an appropriate operator when the concept of tolerance does not apply, and the comparison is performed against a single reference value.
+            Alternatively, it is an appropriate operator when a two-fold tolerance concept apply (e.g. the comparison is performed against a lower and an upper threshold) and, therefore, the reference concept is meaningless.
+            </remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.greaterThan">
+            <summary>Actual value must be greater than a given reference/tolerance value.</summary>
+            <remarks>
+            It is an appropriate operator when the concept of tolerance does not apply, and the comparison is performed against a single reference value.
+            Alternatively, it is an appropriate operator when a two-fold tolerance concept apply (e.g. the comparison is performed against a lower and an upper threshold) and, therefore, the reference concept is meaningless.
+            </remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.lessEqual">
+            <summary>Actual value must be lesser or equal than a given reference/tolerance value.</summary>
+            <remarks>
+            It is an appropriate operator when the concept of tolerance does not apply, and the comparison is performed against a single reference value.
+            Alternatively, it is an appropriate operator when a two-fold tolerance concept apply (e.g. the comparison is performed against a lower and an upper threshold) and, therefore, the reference concept is meaningless.
+            </remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.lessThan">
+            <summary>Actual value must be lesser than a given reference/tolerance value.</summary>
+            <remarks>
+            It is an appropriate operator when the concept of tolerance does not apply, and the comparison is performed against a single reference value.
+            Alternatively, it is an appropriate operator when a two-fold tolerance concept apply (e.g. the comparison is performed against a lower and an upper threshold) and, therefore, the reference concept is meaningless.
+            </remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.betweenEqual">
+            <summary>Actual value must lie within a range of values (closed interval).</summary>
+            <remarks>
+            It is an approprate operator when the concept of reference does not apply, and the comparison is performed against two fixed thresholds (or tolerances).
+            Alternatively, it is an appropriate operator when a symmertric range (defined by a single tolerance) around a single refence value applies.
+            </remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.betweenThan">
+            <summary>Actual value must lie within a range of values (open interval).</summary>
+            <remarks>
+            It is an approprate operator when the concept of reference does not apply, and the comparison is performed against two fixed thresholds (or tolerances).
+            Alternatively, it is an appropriate operator when a symmertric range (defined by a single tolerance) around a single refence value applies.
+            </remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.notBetweenEqual">
+            <summary>Actual value must lie outside a range of values (closed interval).</summary>
+            <remarks>
+            It is an approprate operator when the concept of reference does not apply, and the comparison is performed against two fixed thresholds (or tolerances).
+            Alternatively, it is an appropriate operator when a symmertric range (defined by a single tolerance) around a single refence value applies.
+            </remarks>
+        </member>
+        <member name="F:SCFM.ComparisonMode.notBetweenThan">
+            <summary>Actual value must lie within a range of values (open interval).</summary>
+            <remarks>
+            It is an approprate operator when the concept of reference does not apply, and the comparison is performed against two fixed thresholds (or tolerances).
+            Alternatively, it is an appropriate operator when a symmertric range (defined by a single tolerance) around a single refence value applies.
+            </remarks>
+        </member>
+        <member name="T:SCFM.ReportSnippet">
+            <summary>Model of the report that SCFM tests issue.</summary>
+            <remarks>SCFM tests should not send information directly to the user! This is a task for the GUI.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor">
+            <summary>Default parameterless constructor.</summary>
+            <remarks>It is recommended when the object properties are not known a priori.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.String)">
+            <summary>Constructor with the most reduced set of parameters. No reference nor tolerances values are provided.</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
+            <remarks>It is recommended when the reporting event does not support reference or tolerance concepts.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
+            <summary>Constructor with the most reduced set of parameters, plus a reference value along with the comparison mode (tolerance concept does not apply).</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="reference">Reference value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
+            <param name="comparison">Comparison mode between the current value and the reference value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>It is recommended when the reporting event only supports reference concept.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.String,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
+            <summary>Constructor with the most reduced set of parameters, plus a tolerance(s) value(s) along with the comparison mode (reference concept does not apply).</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
+            <param name="tolSoft">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "soft" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolHard">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "hard" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolUnit">Tolerance units. May or may not differ from parameter units. Type: <see cref="T:System.String"/>.</param>
+            <param name="comparison">Comparison mode between the current value and the tolerance value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>It is recommended when the reporting event only supports tolerance concept.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.Object,System.String,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
+            <summary>Constructor that initializes all properties, when both reference and tolerance concepts apply.</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="reference">Reference value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type <see cref="T:System.String"/>.</param>
+            <param name="tolSoft">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "soft" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolHard">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "hard" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolUnit">Tolerance units. May or may not differ from parameter units. Type: <see cref="T:System.String"/>.</param>
+            <param name="comparison">Comparison mode between the current value and the tolerance around the reference value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>It is recommended when the reporting event supports both reference and tolerance concepts.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.ToString">
+            <summary>Written version of the report issued by the current test.</summary>
+            <returns>The written version of each property of <c>this</c> object (one line per property). Type: <see cref="T:System.String"/>.</returns>
+            <remarks>Overrided version of the method <see cref="M:System.Object.ToString"/> of the .NET base class library.</remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.Test">
+            <summary>Test identification.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>See <see cref="T:SCFM.SCFMtests"/></remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.Level">
+            <summary>Test score.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>See <see cref="T:SCFM.InfoLevel"/>.</remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.Message">
+            <summary>Test message.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>Write short string messages!</remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.Source">
+            <summary>Object (source) that issued the report.</summary>
+            <value>Auto-implemented property.</value>
+        </member>
+        <member name="P:SCFM.ReportSnippet.CurrentValue">
+            <summary>Current value of the assessed parameter.</summary>
+            <value>Auto-implemented property.</value>
+        </member>
+        <member name="P:SCFM.ReportSnippet.ValueUnits">
+            <summary>Units of the assessed parameter.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>If the parameter has no units, this property must remain uninitalized (<c>null</c>).</remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.ReferenceValue">
+            <summary>Reference value of the assessed parameter.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>If reference value is a meaningless concept for this test, this property must remain uninitalized (<c>null</c>).</remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.ToleranceSoft">
+            <summary>Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "soft" tolerance.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>
+            If tolerance value is a meaningless concept for this test, this property must remain uninitalized (<c>null</c>).
+            If a single tolerance value applies for this test, <see cref="P:SCFM.ReportSnippet.ToleranceSoft"/> and <see cref="P:SCFM.ReportSnippet.ToleranceHard"/> properties must be equal.
+            </remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.ToleranceHard">
+            <summary>Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "hard" tolerance.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>
+            If tolerance value is a meaningless concept for this test, this property must remain uninitalized (<c>null</c>).
+            If a single tolerance value applies for this test, <see cref="P:SCFM.ReportSnippet.ToleranceSoft"/> and <see cref="P:SCFM.ReportSnippet.ToleranceHard"/> properties must be equal.
+            </remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.ToleranceUnits">
+            <summary>Units of the tolerance of the assessed parameter.</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>
+            If the tolerance has no units, this property must remain uninitalized (<c>null</c>).
+            Tolerance units are usually the same than parameter units, but in particular situations they may differ (e.g., tolerance expressed as a percentage around a reference value).
+            </remarks>
+        </member>
+        <member name="P:SCFM.ReportSnippet.Comparison">
+            <summary>Comparison mode between the current value and the reference/tolerance value(s).</summary>
+            <value>Auto-implemented property.</value>
+            <remarks>See <see cref="T:SCFM.ComparisonMode"/>.</remarks>
+        </member>
+        <member name="T:SCFM.SCFMtests">
+            <summary>List of all tests within SCFM project.</summary>
+            <remarks>This Enum is used by <see cref="T:SCFM.ReportSnippet"/> to identify the underlying test of the report.</remarks>
+        </member>
+        <member name="F:SCFM.SCFMtests.constraintCheck">
+            <summary>Dosimetric assessment of constraint of an OAR.</summary>
+        </member>
+    </members>
+</doc>
