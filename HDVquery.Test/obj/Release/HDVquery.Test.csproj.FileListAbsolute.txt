@@ -26,3 +26,17 @@ C:\Dropbox\HSCSP\scripting\SCFM\HDVquery.Test\bin\Release\InternalReporting.xml
 C:\Dropbox\HSCSP\scripting\SCFM\HDVquery.Test\obj\Release\HDVquery.Test.csprojResolveAssemblyReference.cache
 C:\Dropbox\HSCSP\scripting\SCFM\HDVquery.Test\obj\Release\HDVquery.Test.dll
 C:\Dropbox\HSCSP\scripting\SCFM\HDVquery.Test\obj\Release\HDVquery.Test.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\HDVquery.Test.xml
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\HDVquery.Test.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\HDVquery.Test.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\HDVquery.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\VMS.TPS.Common.Model.API.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\VMS.TPS.Common.Model.Types.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\HDVquery.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\HDVquery.xml
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Release\InternalReporting.xml
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\obj\Release\HDVquery.Test.csprojResolveAssemblyReference.cache
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\obj\Release\HDVquery.Test.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\obj\Release\HDVquery.Test.pdb

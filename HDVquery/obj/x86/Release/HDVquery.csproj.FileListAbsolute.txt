@@ -1,0 +1,11 @@
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\HDVquery.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\HDVquery.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\HDVquery.xml
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\VMS.TPS.Common.Model.API.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\VMS.TPS.Common.Model.Types.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\x86\Release\InternalReporting.xml
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\obj\x86\Release\HDVquery.csprojResolveAssemblyReference.cache
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\obj\x86\Release\HDVquery.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\obj\x86\Release\HDVquery.pdb

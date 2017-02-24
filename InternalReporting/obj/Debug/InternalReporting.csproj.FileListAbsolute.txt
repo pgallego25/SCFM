@@ -2,6 +2,6 @@ C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Debug\InternalReportin
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Debug\InternalReporting.pdb
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Debug\VMS.TPS.Common.Model.API.dll
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Debug\VMS.TPS.Common.Model.Types.dll
-C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Debug\InternalReporting.csprojResolveAssemblyReference.cache
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Debug\InternalReporting.dll
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Debug\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Debug\InternalReporting.csprojResolveAssemblyReference.cache

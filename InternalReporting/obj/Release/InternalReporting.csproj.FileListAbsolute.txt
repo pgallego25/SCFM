@@ -14,3 +14,11 @@ C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\bin\Release\VMS.TPS.Common.Mod
 C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.csprojResolveAssemblyReference.cache
 C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.dll
 C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting\obj\Release\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Release\InternalReporting.xml
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Release\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Release\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Release\VMS.TPS.Common.Model.API.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Release\VMS.TPS.Common.Model.Types.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Release\InternalReporting.csprojResolveAssemblyReference.cache
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Release\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Release\InternalReporting.pdb

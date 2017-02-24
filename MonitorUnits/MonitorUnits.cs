@@ -16,13 +16,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace SCFM
 {
 
-        public class myClase
+        public static class MonitorUnits
         {
             /// <summary>
             /// BASURA
             /// </summary>
             /// <returns></returns>
-            public void Funcionquehacecosas()
+            public static void Funcionquehacecosas()
 
             {
 
@@ -40,7 +40,7 @@ namespace SCFM
             /// </summary>
             /// <param name="array"></param>
             /// <returns></returns>
-            public string DisplayPolygon(float[,] array)
+            public static string DisplayPolygon(float[,] array)
             {
                 int rowLength = array.GetLength(0);
                 int colLength = array.GetLength(1);
@@ -66,7 +66,7 @@ namespace SCFM
             /// </summary>
             /// <param name="Path">Path to the File</param>
             /// <returns></returns>
-            public string ImportTextFile(string Path)
+            public static string ImportTextFile(string Path)
             {
                 String Text = "";
                 try
@@ -92,7 +92,7 @@ namespace SCFM
             /// </summary>
             /// <param name="PDDpath">  Path to PDD Files</param>
             /// <returns></returns>
-            public double[][] ReadPDDfromFile(string PDDpath)
+            public static double[][] ReadPDDfromFile(string PDDpath)
 
             {
                 string Text = ImportTextFile(PDDpath);
@@ -132,7 +132,7 @@ namespace SCFM
             /// </summary>
             /// <param name="ScpPath">  Path to Scp File </param>
             /// <returns></returns>
-            public Tuple<double[][], double[]> ReadScpTable(string ScpPath)
+            public static Tuple<double[][], double[]> ReadScpTable(string ScpPath)
             {
                 string Text = ImportTextFile(ScpPath);
                 double[] Sizes = new double[1];
@@ -173,7 +173,7 @@ namespace SCFM
             /// </summary>
             /// <param name="SpPath"> Path to Sp File</param>
             /// <returns></returns>
-            public Tuple<double[], double[]> ReadSpTable(string SpPath)
+            public static Tuple<double[], double[]> ReadSpTable(string SpPath)
             {
                 //Check if the file contains PDD tags "%AXIS Y" or "%Type OPD"
 
@@ -217,7 +217,7 @@ namespace SCFM
             /// <param name="Fy">Field Size  Y direction</param>
             /// <param name="ScpPath">  Path to Scp File</param>
             /// <returns></returns>
-            public double GetScpFromFieldSize(double Fx, double Fy, string ScpPath)
+            public static double GetScpFromFieldSize(double Fx, double Fy, string ScpPath)
             {
 
                 Tuple<double[][], double[]> Resultado = ReadScpTable(ScpPath);
@@ -284,7 +284,7 @@ namespace SCFM
             /// <param name="Size"> Field Size</param>
             /// <param name="SpPath">  Path to Sp File </param>
             /// <returns></returns>
-            public double GetSPfromFieldSize(double Size, string SpPath)
+            public static double GetSPfromFieldSize(double Size, string SpPath)
             {
                 double Resultado = 0;
                 Tuple<double[], double[]> SpResults = ReadSpTable(SpPath);
@@ -329,7 +329,7 @@ namespace SCFM
             /// <param name="Size"> Field Size</param>
             /// <param name="Path"> Path To PDD/TPR files</param>
             /// <returns></returns>
-            public Tuple<double[], double[], double[]> GetPDDorTPRfromFieldSize(double Size, string Path)
+            public static Tuple<double[], double[], double[]> GetPDDorTPRfromFieldSize(double Size, string Path)
             {
                 Tuple<double[][], double[], double[]> Resultados;
                 double[] Sizes;
@@ -392,7 +392,7 @@ namespace SCFM
             /// <param name="d"> Distance from the surface of water</param>
             /// <param name="TPRpath"> Path to TPR Files</param>
             /// <returns></returns>
-            public double GetTPRfromFieldSizeAndDistance(double Size, double d, string TPRpath)
+            public static double GetTPRfromFieldSizeAndDistance(double Size, double d, string TPRpath)
             {
 
                 Tuple<double[], double[], double[]> Results = GetPDDorTPRfromFieldSize(Size, TPRpath);
@@ -425,7 +425,7 @@ namespace SCFM
             /// </summary>
             /// <param name="PDDPath">Path to PDD Files</param>
             /// <returns></returns>
-            public Tuple<double[][], double[], double[]> CreatePDDTable(string PDDPath)
+            public static Tuple<double[][], double[], double[]> CreatePDDTable(string PDDPath)
             {
                 //string sourceDirectory = @"J:\\TRANSFER\\FISICA\\VarianScripting\\DatosClinacs\\600\\PDDs\\";
                 // MessageBox.Show(sourceDirectory);
@@ -468,7 +468,7 @@ namespace SCFM
             /// <param name="PDDpath"> >Path to PDD Files</param>
             /// <param name="SPPath"> >Path to Sp File</param>
             /// <returns></returns>
-            public Tuple<double[][], double[], double[]> CreateTPRTableFromPDDandSP(string PDDpath, string SPPath)
+            public static Tuple<double[][], double[], double[]> CreateTPRTableFromPDDandSP(string PDDpath, string SPPath)
             {
                 Tuple<double[][], double[], double[]> Resultados = CreatePDDTable(PDDpath);
                 double[][] PDDTable = Resultados.Item1;
@@ -608,7 +608,7 @@ namespace SCFM
             /// <param name="Number">Number which position we would like to know</param>
             /// <param name="array">Array</param>
             /// <returns></returns>
-            public int[] SearchScalarInArray(double Number, double[] array)
+            public static int[] SearchScalarInArray(double Number, double[] array)
             {
                 double[] ListaAbs = new double[array.Length];
 
@@ -672,7 +672,7 @@ namespace SCFM
             /// <param name="y0"></param>
             /// <param name="y1"></param>
             /// <returns></returns>
-            static public double linear(double x, double x0, double x1, double y0, double y1)
+            static  public double linear(double x, double x0, double x1, double y0, double y1)
             {
                 if ((x1 - x0) == 0)
                 {
@@ -686,7 +686,7 @@ namespace SCFM
             /// This is useful debuggin the code in Eclipse.
             /// </summary>
             /// <param name="MultiArray"></param>
-            public void ShowMultiArray(double[][] MultiArray)
+            public static void ShowMultiArray(double[][] MultiArray)
             {
                 string String = "";
 
@@ -708,7 +708,7 @@ namespace SCFM
             /// This is useful debuggin the code in Eclipse.
             /// </summary>
             /// <param name="Array"></param>
-            public void ShowArray(double[] Array)
+            public static void ShowArray(double[] Array)
             {
                 string String = "";
 
@@ -728,7 +728,7 @@ namespace SCFM
             /// </summary>
             /// <param name="Array"></param>
             /// <returns></returns>
-            public double[] NormalizeArray(double[] Array)
+            public static double[] NormalizeArray(double[] Array)
             {
                 double[] ArrayNormalized = new double[Array.Length];
                 double MaxArray = Array.Max();
@@ -746,7 +746,7 @@ namespace SCFM
             /// </summary>
             /// <param name="t"> Object to be serialized</param>
             /// <param name="path">Path to save the file</param>
-            public void Serialize(object t, string path)
+            public static void Serialize(object t, string path)
             {
                 using (Stream stream = File.Open(path, FileMode.Create))
                 {
@@ -760,7 +760,7 @@ namespace SCFM
             /// This method read a binary file and create an object.
             /// </summary>
             /// <param name="path">Path to save the file</param>
-            public object Deserialize(string path)
+            public static object Deserialize(string path)
             {
                 using (Stream stream = File.Open(path, FileMode.Open))
                 {

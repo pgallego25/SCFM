@@ -1,0 +1,4 @@
+C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\bin\Release\MonitorUnits.dll
+C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\bin\Release\MonitorUnits.pdb
+C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\obj\Release\MonitorUnits.dll
+C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\obj\Release\MonitorUnits.pdb

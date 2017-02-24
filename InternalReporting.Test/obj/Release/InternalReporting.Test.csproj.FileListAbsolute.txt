@@ -18,3 +18,13 @@ C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting.Test\bin\Release\InternalRepor
 C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting.Test\obj\Release\InternalReporting.Test.csprojResolveAssemblyReference.cache
 C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting.Test\obj\Release\InternalReporting.Test.dll
 C:\Dropbox\HSCSP\scripting\SCFM\InternalReporting.Test\obj\Release\InternalReporting.Test.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\Release\InternalReporting.Test.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\Release\InternalReporting.Test.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\Release\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\Release\VMS.TPS.Common.Model.API.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\Release\VMS.TPS.Common.Model.Types.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\Release\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\Release\InternalReporting.xml
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\obj\Release\InternalReporting.Test.csprojResolveAssemblyReference.cache
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\obj\Release\InternalReporting.Test.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\obj\Release\InternalReporting.Test.pdb

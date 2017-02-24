@@ -15,3 +15,5 @@ A:\Dropbox\HSCSP\scripting\SCFM\plugins\SCFM.esapi.pdb
 A:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.csprojResolveAssemblyReference.cache
 A:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.dll
 A:\Dropbox\HSCSP\scripting\SCFM\Projects\SCFM\obj\Release\SCFM.esapi.pdb
+C:\Users\pgallego\Source\Repos\SCFM\plugins\SCFM.esapi.XML
+C:\Users\pgallego\Source\Repos\SCFM\Projects\SCFM\obj\Release\SCFM.csprojResolveAssemblyReference.cache

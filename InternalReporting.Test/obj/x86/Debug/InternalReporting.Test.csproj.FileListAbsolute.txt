@@ -1,0 +1,10 @@
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\x86\Debug\InternalReporting.Test.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\x86\Debug\InternalReporting.Test.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\x86\Debug\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\x86\Debug\VMS.TPS.Common.Model.API.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\x86\Debug\VMS.TPS.Common.Model.Types.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\x86\Debug\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\bin\x86\Debug\InternalReporting.xml
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\obj\x86\Debug\InternalReporting.Test.csprojResolveAssemblyReference.cache
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\obj\x86\Debug\InternalReporting.Test.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting.Test\obj\x86\Debug\InternalReporting.Test.pdb

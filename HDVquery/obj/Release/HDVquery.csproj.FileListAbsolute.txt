@@ -34,3 +34,14 @@ C:\Dropbox\HSCSP\scripting\SCFM\HDVquery\bin\Release\InternalReporting.xml
 C:\Dropbox\HSCSP\scripting\SCFM\HDVquery\obj\Release\HDVquery.csprojResolveAssemblyReference.cache
 C:\Dropbox\HSCSP\scripting\SCFM\HDVquery\obj\Release\HDVquery.dll
 C:\Dropbox\HSCSP\scripting\SCFM\HDVquery\obj\Release\HDVquery.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\HDVquery.xml
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\HDVquery.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\HDVquery.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\VMS.TPS.Common.Model.API.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\VMS.TPS.Common.Model.Types.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\bin\Release\InternalReporting.xml
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\obj\Release\HDVquery.csprojResolveAssemblyReference.cache
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\obj\Release\HDVquery.dll
+C:\Users\pgallego\Source\Repos\SCFM\HDVquery\obj\Release\HDVquery.pdb

@@ -91,66 +91,6 @@
             <summary>Model of the report that SCFM tests issue.</summary>
             <remarks>SCFM tests should not send information directly to the user! This is a task for the GUI.</remarks>
         </member>
-        <member name="M:SCFM.ReportSnippet.#ctor">
-            <summary>Default parameterless constructor.</summary>
-            <remarks>It is recommended when the object properties are not known a priori.</remarks>
-        </member>
-        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.String)">
-            <summary>Constructor with the most reduced set of parameters. No reference nor tolerances values are provided.</summary>
-            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
-            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
-            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
-            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
-            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
-            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
-            <remarks>It is recommended when the reporting event does not support reference or tolerance concepts.</remarks>
-        </member>
-        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
-            <summary>Constructor with the most reduced set of parameters, plus a reference value along with the comparison mode (tolerance concept does not apply).</summary>
-            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
-            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
-            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
-            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
-            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
-            <param name="reference">Reference value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
-            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
-            <param name="comparison">Comparison mode between the current value and the reference value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
-            <remarks>It is recommended when the reporting event only supports reference concept.</remarks>
-        </member>
-        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.String,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
-            <summary>Constructor with the most reduced set of parameters, plus a tolerance(s) value(s) along with the comparison mode (reference concept does not apply).</summary>
-            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
-            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
-            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
-            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
-            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
-            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
-            <param name="tolSoft">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "soft" tolerance. Type: <see cref="T:System.Object"/>.</param>
-            <param name="tolHard">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "hard" tolerance. Type: <see cref="T:System.Object"/>.</param>
-            <param name="tolUnit">Tolerance units. May or may not differ from parameter units. Type: <see cref="T:System.String"/>.</param>
-            <param name="comparison">Comparison mode between the current value and the tolerance value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
-            <remarks>It is recommended when the reporting event only supports tolerance concept.</remarks>
-        </member>
-        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.Object,System.String,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
-            <summary>Constructor that initializes all properties, when both reference and tolerance concepts apply.</summary>
-            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
-            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
-            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
-            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
-            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
-            <param name="reference">Reference value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
-            <param name="unit">Units of the assessed parameter. Type <see cref="T:System.String"/>.</param>
-            <param name="tolSoft">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "soft" tolerance. Type: <see cref="T:System.Object"/>.</param>
-            <param name="tolHard">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "hard" tolerance. Type: <see cref="T:System.Object"/>.</param>
-            <param name="tolUnit">Tolerance units. May or may not differ from parameter units. Type: <see cref="T:System.String"/>.</param>
-            <param name="comparison">Comparison mode between the current value and the tolerance around the reference value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
-            <remarks>It is recommended when the reporting event supports both reference and tolerance concepts.</remarks>
-        </member>
-        <member name="M:SCFM.ReportSnippet.ToString">
-            <summary>Written version of the report issued by the current test.</summary>
-            <returns>The written version of each property of <c>this</c> object (one line per property). Type: <see cref="T:System.String"/>.</returns>
-            <remarks>Overrided version of the method <see cref="M:System.Object.ToString"/> of the .NET base class library.</remarks>
-        </member>
         <member name="P:SCFM.ReportSnippet.Test">
             <summary>Test identification.</summary>
             <value>Auto-implemented property.</value>
@@ -212,6 +152,66 @@
             <summary>Comparison mode between the current value and the reference/tolerance value(s).</summary>
             <value>Auto-implemented property.</value>
             <remarks>See <see cref="T:SCFM.ComparisonMode"/>.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor">
+            <summary>Default parameterless constructor.</summary>
+            <remarks>It is recommended when the object properties are not known a priori.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.String)">
+            <summary>Constructor with the most reduced set of parameters. No reference nor tolerances values are provided.</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
+            <remarks>It is recommended when the reporting event does not support reference or tolerance concepts.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
+            <summary>Constructor with the most reduced set of parameters, plus a reference value along with the comparison mode (tolerance concept does not apply).</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="reference">Reference value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
+            <param name="comparison">Comparison mode between the current value and the reference value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>It is recommended when the reporting event only supports reference concept.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.String,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
+            <summary>Constructor with the most reduced set of parameters, plus a tolerance(s) value(s) along with the comparison mode (reference concept does not apply).</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type: <see cref="T:System.String"/>.</param>
+            <param name="tolSoft">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "soft" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolHard">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "hard" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolUnit">Tolerance units. May or may not differ from parameter units. Type: <see cref="T:System.String"/>.</param>
+            <param name="comparison">Comparison mode between the current value and the tolerance value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>It is recommended when the reporting event only supports tolerance concept.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.#ctor(SCFM.SCFMtests,SCFM.InfoLevel,System.String,System.Object,System.Object,System.Object,System.String,System.Object,System.Object,System.String,SCFM.ComparisonMode)">
+            <summary>Constructor that initializes all properties, when both reference and tolerance concepts apply.</summary>
+            <param name="test">Test identification. Type: <see cref="T:SCFM.SCFMtests"/>.</param>
+            <param name="level">Test score. Type: <see cref="T:SCFM.InfoLevel"/>.</param>
+            <param name="msg">Test message. Type: <see cref="T:System.String"/>.</param>
+            <param name="s">Object (source) that issued the current report. Type: <see cref="T:System.Object"/>.</param>
+            <param name="current">Current value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="reference">Reference value of the assessed parameter. Type: <see cref="T:System.Object"/>.</param>
+            <param name="unit">Units of the assessed parameter. Type <see cref="T:System.String"/>.</param>
+            <param name="tolSoft">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "soft" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolHard">Tolerance value of the assessed parameter. If a two-fold/range tolerance concept applies, it is the "hard" tolerance. Type: <see cref="T:System.Object"/>.</param>
+            <param name="tolUnit">Tolerance units. May or may not differ from parameter units. Type: <see cref="T:System.String"/>.</param>
+            <param name="comparison">Comparison mode between the current value and the tolerance around the reference value. Type: <see cref="T:SCFM.ComparisonMode"/>.</param>
+            <remarks>It is recommended when the reporting event supports both reference and tolerance concepts.</remarks>
+        </member>
+        <member name="M:SCFM.ReportSnippet.ToString">
+            <summary>Written version of the report issued by the current test.</summary>
+            <returns>The written version of each property of <c>this</c> object (one line per property). Type: <see cref="T:System.String"/>.</returns>
+            <remarks>Overrided version of the method <see cref="M:System.Object.ToString"/> of the .NET base class library.</remarks>
         </member>
         <member name="T:SCFM.SCFMtests">
             <summary>List of all tests within SCFM project.</summary>

@@ -1,0 +1,6 @@
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\x86\Debug\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\x86\Debug\InternalReporting.pdb
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\x86\Debug\VMS.TPS.Common.Model.API.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\x86\Debug\VMS.TPS.Common.Model.Types.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\x86\Debug\InternalReporting.dll
+C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\x86\Debug\InternalReporting.pdb
