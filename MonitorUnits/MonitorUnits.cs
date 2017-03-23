@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Shapes;
 using System.Windows;
 using System.Windows.Media;
-
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SCFM
@@ -96,7 +95,7 @@ namespace SCFM
 
             {
                 string Text = ImportTextFile(PDDpath);
-
+                MessageBox.Show(Text);
                 //Check if the file contains PDD tags "%AXIS Y" or "%Type OPD"
                 if (Text.IndexOf("%AXIS Z", StringComparison.OrdinalIgnoreCase) >= 0 == false ||
                         Text.IndexOf("%Type OPD", StringComparison.OrdinalIgnoreCase) >= 0 == false)
@@ -437,8 +436,10 @@ namespace SCFM
                 int Contador = 0;
                 foreach (string currentFile in txtFiles)
                 {
-                    //   MessageBox.Show(currentFile);
-                    string Text = ImportTextFile(currentFile);
+                MessageBox.Show(currentFile);
+
+                //   MessageBox.Show(currentFile);
+                string Text = ImportTextFile(currentFile);
                     int Index = Text.IndexOf("FLSZ");
                     Sizes[Contador] = Convert.ToInt32(Text.Substring(Index + 5, 3)) / 10.0;
 

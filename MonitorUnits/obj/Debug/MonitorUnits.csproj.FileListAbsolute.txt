@@ -3,3 +3,7 @@ C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\bin\Debug\MonitorUnits.pdb
 C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\obj\Debug\MonitorUnits.dll
 C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\obj\Debug\MonitorUnits.pdb
 C:\Users\pgallego\Source\Repos\SCFM\MonitorUnits\obj\Debug\MonitorUnits.csprojResolveAssemblyReference.cache
+J:\TRANSFER\FISICA\VarianScripting\SCFM\MonitorUnits\bin\Debug\MonitorUnits.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\MonitorUnits\bin\Debug\MonitorUnits.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\MonitorUnits\obj\Debug\MonitorUnits.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\MonitorUnits\obj\Debug\MonitorUnits.pdb

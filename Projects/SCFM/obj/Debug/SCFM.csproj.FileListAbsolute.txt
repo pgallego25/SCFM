@@ -3,3 +3,8 @@ C:\Users\pgallego\Source\Repos\SCFM\Projects\SCFM\obj\Debug\SCFM.esapi.dll
 C:\Users\pgallego\Source\Repos\SCFM\plugins\SCFM.esapi.dll
 C:\Users\pgallego\Source\Repos\SCFM\plugins\SCFM.esapi.pdb
 C:\Users\pgallego\Source\Repos\SCFM\Projects\SCFM\obj\Debug\SCFM.esapi.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\plugins\SCFM.esapi.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\plugins\SCFM.esapi.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\Projects\SCFM\obj\Debug\SCFM.csprojResolveAssemblyReference.cache
+J:\TRANSFER\FISICA\VarianScripting\SCFM\Projects\SCFM\obj\Debug\SCFM.esapi.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\Projects\SCFM\obj\Debug\SCFM.esapi.pdb

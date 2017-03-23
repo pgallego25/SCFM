@@ -5,3 +5,9 @@ C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\bin\Debug\VMS.TPS.Common.M
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Debug\InternalReporting.dll
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Debug\InternalReporting.pdb
 C:\Users\pgallego\Source\Repos\SCFM\InternalReporting\obj\Debug\InternalReporting.csprojResolveAssemblyReference.cache
+J:\TRANSFER\FISICA\VarianScripting\SCFM\InternalReporting\bin\Debug\InternalReporting.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\InternalReporting\bin\Debug\InternalReporting.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\InternalReporting\bin\Debug\VMS.TPS.Common.Model.API.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\InternalReporting\bin\Debug\VMS.TPS.Common.Model.Types.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\InternalReporting\obj\Debug\InternalReporting.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\InternalReporting\obj\Debug\InternalReporting.pdb

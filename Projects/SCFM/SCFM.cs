@@ -18,7 +18,7 @@ namespace VMS.TPS
 
         /// <summary>Default 0-parameter constructor.</summary>
         public Script() { }
-        
+
         /// <summary>Entry point of the script.</summary>
         /// <param name="context">The context provided by Eclipse. Type: <see cref="VMS.TPS.Common.Model.API.ScriptContext"/>.</param>
         public void Execute(ScriptContext context /*, System.Windows.Window window*/)

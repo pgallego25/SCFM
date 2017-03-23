@@ -11,3 +11,15 @@ C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\bin\Debug\InternalReporting.xm
 C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\obj\Debug\HDVquery.Test.csprojResolveAssemblyReference.cache
 C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\obj\Debug\HDVquery.Test.dll
 C:\Users\pgallego\Source\Repos\SCFM\HDVquery.Test\obj\Debug\HDVquery.Test.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\HDVquery.Test.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\HDVquery.Test.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\HDVquery.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\InternalReporting.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\VMS.TPS.Common.Model.API.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\VMS.TPS.Common.Model.Types.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\HDVquery.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\HDVquery.xml
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\InternalReporting.pdb
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\bin\Debug\InternalReporting.xml
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\obj\Debug\HDVquery.Test.dll
+J:\TRANSFER\FISICA\VarianScripting\SCFM\HDVquery.Test\obj\Debug\HDVquery.Test.pdb
